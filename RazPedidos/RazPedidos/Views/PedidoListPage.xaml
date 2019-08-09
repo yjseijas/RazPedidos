@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RazPedidos.Views.PedidoListPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView
+           Orientation="Horizontal">
+        <StackLayout
+            BindingContext="{Binding pedidoListViewModel}"
+            Padding="5">
+            <StackLayout
+                Orientation="Horizontal"
+                >
+                <Label
+                    Text="Pedido Nro. ">
+                </Label>
+                <!--<Label
+                    x:Name="txtNumero"
+                    Text="{Binding nNumero}">
+                </Label>-->
+                <Label
+                    x:Name="txtNumero"
+                    Text="{Binding NNumero,Mode=TwoWay}">
+                </Label>
+                <!--<Label
+                    Text="   Indique Código Matchear: ">
+                </Label>
+                <Entry
+                    Completed="searchProduct"   
+                    FontSize="Small"
+                    WidthRequest="100">
+                </Entry>-->
+                <SearchBar
+                    x:Name="findBarra"
+                    Text="{Binding CCodBuscar,Mode=TwoWay}"
+                    Placeholder="Indique Producto..."
+                    SearchCommand="{Binding SearchCommand}">
+
+                </SearchBar>
+            </StackLayout>
+            <StackLayout
+                    BackgroundColor="White"
+                    Orientation="Horizontal">
+                <Grid
+                    VerticalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="65"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Cod. Pro." 
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                         Grid.Row="0"
+                         Grid.Column="2"
+                         FontAttributes="Bold"
+                         FontSize="Small" 
+                         Text="Nombre Producto"
+                         TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="3"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Cantidad"
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="6"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Cajas"
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="7"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="8"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Sector"
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="9"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="10"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Cant.Carg."
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="11"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="12"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Cajs.Carg."
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="13"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="14"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Bult.Carg."
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="15"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="16"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Completada"
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                </Grid>
+            </StackLayout>
+
+                
+            <ListView 
+                x:Name="listaPedido"
+                
+                BackgroundColor= "Silver"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRunning, Mode=TwoWay}"
+                ItemsSource="{Binding PedidoShow}"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="7"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="6"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="6"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition Width="6"/>
+                                    <ColumnDefinition Width="65"/>
+                                    <ColumnDefinition Width="0"/>   
+                                    <ColumnDefinition Width="65"/>
+                                </Grid.ColumnDefinitions>
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="Small" 
+                                    Text="{Binding codigo}"
+                                    TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="   "
+                                    FontSize="Small">
+                                </Label>
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    FontAttributes="Bold"
+                                    FontSize="Small" 
+                                    Text="{Binding descrip}"
+                                    TextColor="Black">
+                                </Label>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Text="   "
+                                    FontSize="Small">
+                                </Label>
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="4"
+                                    FontAttributes="Bold"
+                                    FontSize="Small" 
+                                    Text="{Binding cantd}"
+                                    TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="5"
+                                    Text="   "
+                                    FontSize="Small">
+                                </Label>
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="6"
+                                    FontAttributes="Bold"
+                                    FontSize="Small" 
+                                    Text="{Binding cajasc}"
+                                    TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="7"
+                                    Text="   "
+                                    FontSize="Small">
+                                </Label>
+                                <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="8"
+                                    FontAttributes="Bold"
+                                    FontSize="Small" 
+                                    Text="{Binding idsector}"
+                                    TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="9"
+                                    Text="   "
+                                    FontSize="Small">
+                                </Label>
+                                <Label 
+                                     Grid.Row="0"
+                                     Grid.Column="10"
+                                     FontAttributes="Bold"
+                                     FontSize="Small" 
+                                     Text="{Binding cantdrec}"
+                                     TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="11"
+                                    Text="   "
+                                    FontSize="Small">
+                                 </Label>
+                                 <Label 
+                                     Grid.Row="0"
+                                     Grid.Column="12"
+                                     FontAttributes="Bold"
+                                     FontSize="Small" 
+                                     Text="{Binding cajasrec}"
+                                     TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="13"
+                                    Text="   "
+                                    FontSize="Small">
+                                </Label>
+                                <Label 
+                                     Grid.Row="0"
+                                     Grid.Column="14"
+                                     FontAttributes="Bold"
+                                     FontSize="Small" 
+                                     Text="{Binding bultosrec}"
+                                     TextColor="Black">
+                                </Label>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="15"
+                                    Text="   "
+                                    FontSize="Small">
+                                </Label>
+                                <Switch
+                                     Grid.Row="0"
+                                     Grid.Column="16"
+                                     
+                                     IsToggled="{Binding isCompleted, Mode=TwoWay}">
+                                 </Switch>
+                            </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                 BackgroundColor="Navy"
+                 BorderRadius="23"
+                 Command="{Binding ProcesarCommand}"
+                 HeightRequest="46"
+                HorizontalOptions="CenterAndExpand"
+                 Text="Procesar Pedido"
+                 TextColor="White">
+            </Button>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

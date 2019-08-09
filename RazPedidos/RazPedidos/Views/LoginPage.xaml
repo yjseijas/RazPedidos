@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RazPedidos.Views.LoginPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Pedidos Raz">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding loginViewModel}">
+            <StackLayout
+                Padding="10,20,10,5">
+                <Image
+                   Source="razfondo"
+                    WidthRequest="250">
+                    </Image>
+                <Grid
+                    Margin="10,0"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Usuario"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Keyboard="Email"
+                        Text="{Binding Email,Mode=TwoWay}"
+                        Placeholder="Indique Su Login">
+                    </Entry>
+                    <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Password"
+                    VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        IsPassword="True"
+                        Text="{Binding Password,Mode=TwoWay}"
+                        Placeholder="Indique su clave">
+                    </Entry>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning,Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+
+                </ActivityIndicator>
+                <!--<StackLayout
+                    Margin="10,0"
+                    Orientation="Horizontal" 
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Remember me on this device"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch
+                        IsToggled="{Binding IsRememberd,Mode=TwoWay}"
+                        HorizontalOptions="End">
+                    </Switch>
+                </StackLayout>-->
+                <!--<Label
+                    HorizontalOptions="Center"
+                    Text="Forgot your password?"
+                    TextColor="Blue">
+
+                </Label>-->
+                <StackLayout
+                    Margin="40,20"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Button
+                        BackgroundColor="Navy"
+                        BorderRadius="23"
+                        Command="{Binding LoginCommand}"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Aceptar"
+                        TextColor="White"
+                        IsEnabled="{Binding IsAceptEnabled,Mode=TwoWay}">
+                    </Button>
+                    <!--<Button
+                        BackgroundColor="Purple" 
+                        BorderRadius="23"
+                        HeightRequest="46"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Register"
+                        TextColor="White">
+                    </Button>-->
+                </StackLayout>
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

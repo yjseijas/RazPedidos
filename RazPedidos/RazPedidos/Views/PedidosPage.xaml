@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RazPedidos.Views.PedidosPage"
+             xmlns:local="clr-namespace:RazPedidos.ViewModels;assembly=RazPedidos"
+
+             xmlns:dxGrid="clr-namespace:DevExpress.Mobile.DataGrid;assembly=DevExpress.Mobile.Grid.v18.1"
+             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+             BindingContext="{Binding Main, Source= {StaticResource Locator}}">
+
+    <ContentPage.BindingContext>    
+        <local:PedidosViewModel x:Name="PedidosShow" />
+    </ContentPage.BindingContext>
+    
+    <dxGrid:GridControl x:Name="grid"
+                        ItemsSource="{Binding PedidosShow}"
+                        SortMode="Multiple">    
+        <dxGrid:GridControl.Columns>
+            <dxGrid:SwitchColumn FieldName="marcar"
+                               Caption="Marcar"
+                               AllowSort="False"
+                               AllowAutoFilter="False"
+                                Width="140"/>
+            <dxGrid:NumberColumn 
+                               FieldName="num" 
+                               Caption="Ped.N°"
+                               Width="170"/>
+            <dxGrid:TextColumn FieldName="direcion"
+                               Caption="Dirección"
+                               Width="240"/>
+            <dxGrid:NumberColumn FieldName="codcli"
+                               Caption="Cod.Cli."
+                                 Width="152"/>
+            <dxGrid:TextColumn FieldName="impreso"
+                               Caption="Imp."
+                               Width="80"/>
+            <dxGrid:NumberColumn FieldName="reparto"
+                               Caption="Rep."
+                                 Width="150"/>
+            <dxGrid:TextColumn FieldName="tipofac"
+                               Caption="N/C"
+                               Width="100"/>
+            <dxGrid:TextColumn FieldName="identif"
+                               Caption="C/G"
+                               Width="80"/>
+            <dxGrid:TextColumn FieldName="username"
+                               Caption="Tomó"
+                               Width="200"/>
+            <dxGrid:DateColumn FieldName="fechaf"
+                               Caption="Fecha"
+                               DisplayFormat="dd/MM/yy"
+                               Width="200"/>
+            <dxGrid:DateColumn FieldName="fechacuando"
+                               Caption="Entregar"
+                               DisplayFormat="dd/MM/yy"
+                               Width="200"/>
+            <dxGrid:TextColumn FieldName="isBlocked"
+                               Caption="Blq."
+                               Width="100"/>
+            <dxGrid:TextColumn FieldName="scf"
+                               Caption="TK"
+                               Width="80"/>
+
+        </dxGrid:GridControl.Columns>
+        
+    </dxGrid:GridControl>
+
+</ContentPage>

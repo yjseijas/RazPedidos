@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RazPedidos.Views.PedidosListPage"       
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Pedidos Raz">
+    <ContentPage.Content>
+        <ScrollView
+                Orientation="Horizontal"
+                BindingContext="{Binding pedidosListViewModel}">
+
+            <StackLayout
+            
+            Padding="5">
+            <SearchBar
+                Text="{Binding Filter,Mode=TwoWay}"
+                Placeholder="Buscar..."
+                SearchCommand="{Binding SearchCommand}">
+            </SearchBar>
+
+
+            <StackLayout BackgroundColor="White"
+                         Orientation="Horizontal">
+                <Grid
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="58"/>
+                        <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="157"/>
+                        <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="55"/>
+                        <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="55"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="55"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="41"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="35"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Command="{Binding SortNumberCommand}"
+                        Text="Nro.Ped."
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        TextColor="Black">
+                    </Button>
+
+                    <!--<Label 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Nro.Ped." 
+                        TextColor="Black">
+                        
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SortNumberCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>-->
+
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="1"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button 
+                         Command="{Binding SortDirCommand}"
+                         Grid.Row="0"
+                         Grid.Column="2"
+                         FontAttributes="Bold"
+                         FontSize="Small" 
+                         Text="Dirección"
+                         TextColor="Black"
+                         VerticalOptions="FillAndExpand">
+                    </Button>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="3"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button
+                        Command="{Binding SortCliCommand}"
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Cod.Cli."
+                        TextColor="Black"
+                        VerticalOptions="FillAndExpand">
+                    </Button>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="5"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button
+                        Command="{Binding SortRepCommand}"
+                        Grid.Row="0"
+                        Grid.Column="6"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Rep."
+                        TextColor="Black">
+                    </Button>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="7"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="8"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="N/C"
+                        TextColor="Black">
+                    </Button>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="9"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="10"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="C/G"
+                        TextColor="Black">
+                    </Button>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="11"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button
+                        Command="{Binding SortTomoCommand}"
+                        Grid.Row="0"
+                        Grid.Column="12"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Tomó"
+                        TextColor="Black">
+                    </Button>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="13"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="14"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Fecha"
+                        TextColor="Black">
+                    </Button>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="15"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="16"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="Entregar"
+                        TextColor="Black">
+                    </Button>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="17"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="18"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="  Blq."
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                    <Label
+                         Grid.Row="0"
+                        Grid.Column="19"
+                        Text="   "
+                        FontSize="Small">
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="20"
+                        FontAttributes="Bold"
+                        FontSize="Small" 
+                        Text="TK"
+                        TextColor="Black"
+                        BackgroundColor="Silver">
+                    </Label>
+                </Grid>
+            </StackLayout>
+            <!--<ActivityIndicator
+                    IsRunning="{Binding IsRunning,Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+
+            </ActivityIndicator>-->
+
+            <ListView 
+                BackgroundColor="Silver"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+               
+                ItemsSource="{Binding PedidosShow}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem
+                                    Text="Procesar Pedido"
+                                    Command="{Binding ProcesarPedidoCommand}" >
+                                    
+                                </MenuItem>
+                            </ViewCell.ContextActions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="58"/>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="62"/>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="58"/>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                    <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            FontAttributes="Bold"
+                                            FontSize="Small" 
+                                            Text="{Binding num}"
+                                            TextColor="Black">  
+                                    </Label>
+                                    <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                        Text="   "
+                                        FontSize="Small">
+                                    </Label>
+                                    <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            FontAttributes="Bold"
+                                            FontSize="Small" 
+                                            Text="{Binding direcion}"
+                                            TextColor="Black">
+                                    </Label>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        Text="   "
+                                        FontSize="Small">
+                                    </Label>
+                                    <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="4"
+                                            FontAttributes="Bold"
+                                            FontSize="Small" 
+                                            Text="{Binding codcli}"
+                                            TextColor="Black">
+                                    </Label>
+
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="5"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="6"
+                                            FontAttributes="Bold"
+                                            FontSize="Small" 
+                                            Text="{Binding reparto}"
+                                            TextColor="Black">
+                                </Label>
+
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="7"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="8"
+                                            FontAttributes="Bold"
+                                            FontSize="Small" 
+                                            Text="{Binding tipofac}"
+                                            TextColor="Black">
+                                </Label>
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="9"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="10"
+                                            FontAttributes="Bold"
+                                            FontSize="Small" 
+                                            Text="{Binding identif}"
+                                            TextColor="Black">
+                                </Label>
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="11"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="12"
+                                            FontAttributes="Bold"
+                                            FontSize="Small" 
+                                            Text="{Binding username}"
+                                            TextColor="Black">
+                                </Label>
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="13"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                        
+                                        Grid.Row="0"
+                                        Grid.Column="14"
+                                        FontAttributes="Bold"
+                                        FontSize="Small" 
+                                        Text="{Binding fechaf,StringFormat='\{0:d}'}"
+                                        TextColor="Black">
+                                </Label>
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="15"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                        
+                                        Grid.Row="0"
+                                        Grid.Column="16"
+                                        FontAttributes="Bold"
+                                        FontSize="Small" 
+                                        Text="{Binding fechacuando,StringFormat='\{0:d}'}"
+                                        TextColor="Black">
+                                </Label>
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="17"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                        Grid.Row="0"
+                                        Grid.Column="18"
+                                        FontAttributes="Bold"
+                                        FontSize="Small" 
+                                        Text="{Binding isBlocked}"
+                                        TextColor="Black">
+                                </Label>
+                                <Label
+                                        Grid.Row="0"
+                                        Grid.Column="19"
+                                        Text="   "
+                                        FontSize="Small">
+                                </Label>
+                                <Label 
+                                        Grid.Row="0"
+                                        Grid.Column="20"
+                                        FontAttributes="Bold"
+                                        FontSize="Small" 
+                                        Text="{Binding cf}"
+                                        TextColor="Black">
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

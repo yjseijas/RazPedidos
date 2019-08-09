@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RazPedidos.Views.PedidoLoadPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}"
+             Title="Pedido Picking">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding pedidoLoadViewModel}">
+            <StackLayout    
+                Padding="10,20,10,5">
+                <Grid
+                    Margin="10,0"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Número "
+                        >
+                    </Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        x:Name="txtNum"
+                        Text="{Binding NNumero,Mode=TwoWay}">
+                    </Label>
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Ubicación "
+                        FontAttributes="Bold">
+                    </Label>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        x:Name="txtUbica"
+                        Text="{Binding Cidsector,Mode=TwoWay}">
+                    </Label>
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Cod. Prod. ">
+                    </Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        x:Name="txtCod"
+                        Text="{Binding Ncodigo,Mode=TwoWay}">
+                    </Label>
+
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="Nombre Prod. "
+                        FontAttributes="Bold"
+                        >
+                    </Label>
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                       x:Name="txtNomProd"
+                        Text="{Binding Cnompro,Mode=TwoWay}">
+                    </Label>
+
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Cantidad ">
+                    </Label>
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        x:Name="txtCant"
+                        Text="{Binding Ncantd,Mode=TwoWay}">
+                    </Label>
+
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Text="Pickeado "
+                        FontAttributes="Bold"
+                        >
+                    </Label>
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                       x:Name="txtPicked"
+                        Text="{Binding Ncantdrec,Mode=TwoWay}">
+                    </Label>
+
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Text="Diferencia"
+                        FontAttributes="Bold"
+                        >
+                    </Label>
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="1"
+                       x:Name="txtCantdif"
+                        Text="{Binding Ncantddif,Mode=TwoWay}">
+                    </Label>
+
+                    <Label
+                        FontAttributes="Bold"
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        x:Name="lblCantdif"
+                        VerticalOptions="Center"
+                        Text="Completado">
+                    </Label>
+                    <Switch
+                        HorizontalOptions="Start"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        IsToggled="{Binding Completado, Mode=TwoWay}">
+                    </Switch>
+                </Grid>
+                <SearchBar
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        x:Name="findBarra"
+                        Text="{Binding CCodBuscar,Mode=TwoWay}"
+                        Placeholder="Indique Código..."
+                        SearchCommand="{Binding SearchCommand}"
+                        IsEnabled="{Binding IsSearchEnabled,Mode=TwoWay}"                        >
+                </SearchBar>
+                <Button
+                   BackgroundColor="Navy"
+                     BorderRadius="23"
+                     Command="{Binding ProcesarCommand}"
+                     HeightRequest="46"
+                     HorizontalOptions="CenterAndExpand"
+                    Text="Siguiente Artículo"
+                    TextColor="White"
+                    IsEnabled="{Binding IsAceptEnabled,Mode=TwoWay}">
+                </Button>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
