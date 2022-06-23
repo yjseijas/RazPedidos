@@ -18,7 +18,7 @@
   <ItemGroup>
     <PackageReference Include="DevExpress.Mobile.Grid" Version="18.1.5" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="16.3.0.29" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
